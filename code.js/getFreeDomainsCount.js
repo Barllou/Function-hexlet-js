@@ -13,16 +13,16 @@ const emails = [
 const freeEmailDomains = ['gmail.com', 'yandex.ru', 'hotmail.com'];
 
 const getFreeDomainsCount = (emails) => {
-  const mp = emails.map((el) => {
-    const [, domen] = el.split('@');
-    return domen;
+  const mp = emails.map((elFullEmail) => {
+    const [, domain] = elFullEmail.split('@');
+    return domain;
   });
-  const fl = mp.filter((el) => freeEmailDomains.includes(el));
-  const result = fl.reduce((acc, el2) => {
-    acc[el2] === undefined ? acc[el2] = 1 : acc[el2] += 1;
+  const fl = mp.filter((elDomain) => freeEmailDomains.includes(elDomain));
+  const res = fl.reduce((acc, elDomain) => {
+    acc[elDomain] === undefined ? acc[elDomain] = 1 : acc[elDomain] += 1;
     return acc;
   }, {});
-  return result;
+  return res;
 };
 
 /* Реализуйте и экспортируйте по умолчанию функцию, которая принимает на вход список емейлов, а возвращает количество емейлов, расположенных на каждом бесплатном домене. Список бесплатных доменов хранится в константе freeEmailDomains.
